@@ -1,7 +1,6 @@
 package by.flameksandr.service;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,9 +11,29 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class DataServiceTest {
 
+    @BeforeAll
+    static void beforeAll() {
+        System.out.println("Before all tests");
+    }
+
     @BeforeEach
     void setUp() {
         System.out.println("Before each tests!!!");
+    }
+
+    @AfterEach
+    void afterEach(){
+        System.out.println("After each");
+    }
+
+    @AfterAll
+    static void afterAll() {
+        System.out.println("After each tests!!!");
+    }
+
+    @Test
+    public void tearDown(){
+        System.out.println("Test passed");
     }
 
     @Test
