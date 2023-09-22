@@ -4,6 +4,7 @@ import org.junit.jupiter.api.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -22,7 +23,7 @@ class DataServiceTest {
     }
 
     @AfterEach
-    void afterEach(){
+    void afterEach() {
         System.out.println("After each");
     }
 
@@ -32,7 +33,7 @@ class DataServiceTest {
     }
 
     @Test
-    public void tearDown(){
+    public void tearDown() {
         System.out.println("Test passed");
     }
 
@@ -76,5 +77,14 @@ class DataServiceTest {
     public void testFindMaxExceptionByStreams_Null_List() {
         List<Integer> numbers = null;
         assertThrows(Exception.class, () -> DataService.findMaxByStreams(numbers));
+    }
+
+    @Test
+    @Timeout(1)
+    public void testPerformance() throws Exception {
+        List<Integer> numbers = Stream.iterate(0, n -> n + 1)
+                .limit(2000)
+                .toList();
+
     }
 }
