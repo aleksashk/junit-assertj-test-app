@@ -1,5 +1,6 @@
 package by.flameksandr.service;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -10,6 +11,11 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 class DataServiceTest {
+
+    @BeforeEach
+    void setUp() {
+        System.out.println("Before each tests!!!");
+    }
 
     @Test
     void findMax() throws Exception {
@@ -46,6 +52,7 @@ class DataServiceTest {
         List<Integer> numbers = Arrays.asList();
         assertThrows(Exception.class, () -> DataService.findMaxByStreams(numbers));
     }
+
     @Test
     public void testFindMaxExceptionByStreams_Null_List() {
         List<Integer> numbers = null;
