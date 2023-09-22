@@ -28,4 +28,27 @@ class DataServiceTest {
         List<Integer> numbers = Arrays.asList();
         assertThrows(Exception.class, () -> DataService.findMax(numbers));
     }
+
+    @Test
+    void findMaxByStreams() throws Exception {
+
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 34, 4333);
+        List<Integer> numbers2 = Arrays.asList(67676761, 565652, 3454544, 699998787, 3435, 6, 7, 34, 4333);
+        int max = DataService.findMaxByStreams(numbers);
+        int max2 = DataService.findMaxByStreams(numbers2);
+
+        assertEquals(max, 4333);
+        assertEquals(max2, 699998787);
+    }
+
+    @Test
+    public void testFindMaxExceptionByStreams() {
+        List<Integer> numbers = Arrays.asList();
+        assertThrows(Exception.class, () -> DataService.findMaxByStreams(numbers));
+    }
+    @Test
+    public void testFindMaxExceptionByStreams_Null_List() {
+        List<Integer> numbers = null;
+        assertThrows(Exception.class, () -> DataService.findMaxByStreams(numbers));
+    }
 }
